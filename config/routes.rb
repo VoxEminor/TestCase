@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   devise_for :users
   scope '/admin' do
     resources :users
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "posts#index"
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
 end
