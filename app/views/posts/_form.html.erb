@@ -1,0 +1,35 @@
+<%= form_with model: post do |form| %>
+  <%= render 'shared/errors', resource: @post %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% post.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %><br>
+    <% post.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <% if @post.files.attached? %>
+    <% @post.files.each do |file| %>
+      <%= image_tag url_for(file)%>
+    <% end %>
+  <% end %>
+  <div>
+    <%= form.label :files %><br>
+    <%= form.file_field :files, multiple: true %><br>
+    <% post.errors.full_messages_for(:file).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

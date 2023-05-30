@@ -1,0 +1,12 @@
+<h1>Публикации</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post %>
+    </li>
+  <% end %>
+</ul>
+<% if can?(:create, Post)%>
+  <%= link_to "Новая Публикация", new_post_path %>
+<% end %>

@@ -1,0 +1,17 @@
+<h1><%= @post.title %></h1>
+
+<p><%= @post.description %></p>
+
+<% if @post.files.attached? %>
+  <% @post.files.each do |file| %>
+    <%= image_tag url_for(file)%>
+  <% end %>
+<% end %>
+
+<ul>
+  <li><%= link_to "Редактировать", edit_post_path(@post) %></li>
+  <li><%= link_to "Удалить", post_path(@post), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Вы уверены?"
+                  } %></li>
+</ul>
