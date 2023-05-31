@@ -1,5 +1,10 @@
 <h1>Публикации</h1>
 
+<%= form_tag(posts_path, :method => "get") do %>
+  <%= check_box_tag(:my) %>
+    <%= submit_tag :my %>
+<% end %>
+
 <ul>
   <% @posts.each do |post| %>
     <li>
@@ -7,6 +12,7 @@
     </li>
   <% end %>
 </ul>
+
 <% if can?(:create, Post)%>
   <%= link_to "Новая Публикация", new_post_path %>
 <% end %>
