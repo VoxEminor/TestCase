@@ -11,6 +11,7 @@ gem "launchy"
 gem 'activeadmin'
 gem 'rspec-rails', '~> 6.0.0'
 gem 'factory_bot_rails'
+gem 'sass-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.5"
 

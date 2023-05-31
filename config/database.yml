@@ -6,25 +6,32 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: zadanie_development
-  pool: 5
-  username: evgeny
-  password: 123
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME") {'zadanie_development'}%>
+  username: <%= ENV.fetch("DATABASE_USER") {'evgeny'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {123} %>
+  host: 127.0.0.1
+  port: 5432
 
 
 test:
   <<: *default
-  database: zadanie_test
-  username: evgeny
-  password: 123
+  database: <%= ENV.fetch("TEST_DATABASE_NAME") {'zadanie_test'} %>
+  username: <%= ENV.fetch("DATABASE_USER") {'evgeny'} %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") {123}%>
 
 #
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: zadanie_production
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: evgeny
+#   password: <%= ENV["ZADANIE_DATABASE_PASSWORD"] %>
+
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: zadanie_production
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: evgeny
-  password: <%= ENV["ZADANIE_DATABASE_PASSWORD"] %>
+  <<: *default
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
