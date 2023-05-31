@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @posts = if params[:my].present?
                current_user.posts
              else
-               Post.all
+               Post.not_blocked
              end
   end
 
