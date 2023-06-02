@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  paginates_per 5
   scope :not_blocked, -> { where(blocked:false)}
   belongs_to :user
   has_many :comments, dependent: :destroy

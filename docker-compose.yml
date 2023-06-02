@@ -6,14 +6,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    tty: true
     depends_on:
-      - db
+      - postgres
     ports:
-      - "3000:3000"
-    env_file: .env
-    environment:
-      RAILS_ENV: development
+      - "3002:3000"
 
-  db:
-    image: postgres:12.1
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "zadanie_development"
+      POSTGRES_USER: "evgeny"
+      POSTGRES_PASSWORD: "123"
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+    ports:
+      - "5434:5432"
   

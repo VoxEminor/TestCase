@@ -10,8 +10,9 @@ class Ability
       else
         can :read, :all
         can :create, :all
-        can(:edit, Post, user:)
-        can :update, Post, user:
+        can :edit, Post, user: user
+        can :update, Post, user: user
+        can :destroy, Post, user: user
       end
 
     else

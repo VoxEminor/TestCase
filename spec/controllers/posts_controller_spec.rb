@@ -43,6 +43,7 @@ RSpec.describe PostsController, type: :controller do
     let(:user) { create(:user) }
 
     before do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
       sign_in user
       get :new
     end
@@ -133,6 +134,24 @@ RSpec.describe PostsController, type: :controller do
         patch :update, params: { id: post.id, post: attributes_for(:post, :invalid) }
         expect(response).to render_template :edit
       end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let(:user) { create(:user) }
+    let!(:post) { create(:post, user:) } 
+
+    before do
+      sign_in user
+    end
+
+    it 'deletes the post' do
+      expect { delete :destroy, params: { id: post.id} }.to change(Post, :count).by(-1)
+    end
+
+    it 'redirects to index view' do
+      delete :destroy, params: { id: post.id }
+      expect(response).to redirect_to root_path
     end
   end
 end

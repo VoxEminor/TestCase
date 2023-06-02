@@ -2,15 +2,15 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_post, only: %i[edit update show destory]
+  before_action :set_post, only: %i[edit update show destroy]
 
   authorize_resource
 
   def index
     @posts = if params[:my].present?
-               current_user.posts
+               current_user.posts.order(:created_at).page(params[:page])
              else
-               Post.not_blocked
+               Post.not_blocked.order(:created_at).page(params[:page])
              end
   end
 
@@ -42,7 +42,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-
     redirect_to root_path, status: :see_other
   end
 

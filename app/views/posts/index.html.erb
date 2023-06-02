@@ -1,18 +1,28 @@
-<h1>Публикации</h1>
+<h1>Posts</h1>
 
-<%= form_tag(posts_path, :method => "get") do %>
-  <%= check_box_tag(:my) %>
-    <%= submit_tag :my %>
-<% end %>
 
 <ul>
   <% @posts.each do |post| %>
     <li>
       <%= link_to post.title, post %>
     </li>
-  <% end %>
+  <% end %> 
 </ul>
 
-<% if can?(:create, Post)%>
-  <%= link_to "Новая Публикация", new_post_path %>
+<center>
+  <%= paginate @posts %></center>
+</center>
+
+<%= form_tag(posts_path, :method => "get") do %>
+  <%= check_box_tag(:my) %>
+    <%= submit_tag :My %>
 <% end %>
+
+
+<% if can?(:create, Post)%>
+  <%= link_to "New Post", new_post_path %>
+<% end %>
+
+<% if current_user.present? && current_user.admin? %>
+  <%= link_to "Admin Panel", admin_root_path %>
+<% end%>

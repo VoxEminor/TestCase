@@ -10,12 +10,12 @@
 <% end %>
 
 <ul>
-  <li><%= link_to "Редактировать", edit_post_path(@post) %></li>
-  <li><%= link_to "Удалить", post_path(@post), data: {
+  <li><%= link_to "Edit", edit_post_path(@post) %></li>
+  <li><%= link_to "Delete", post_path(@post), data: {
                     turbo_method: :delete,
-                    turbo_confirm: "Вы уверены?"
+                    turbo_confirm: "Are you sure?"
                   } %></li>
-  <li><%= link_to "Ко всем постам", posts_path %></li>
+  <li><%= link_to "To All Posts", posts_path %></li>
 
   
 </ul>

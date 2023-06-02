@@ -326,10 +326,11 @@ DEPENDENCIES
   factory_bot_rails
   importmap-rails
   jbuilder
+  kaminari (~> 1.2)
   launchy
   pg (~> 1.1)
   puma (~> 5.0)
-  rails (~> 7.0.5)
+  rails (~> 7.0.3)
   rails-controller-testing
   rspec-rails (~> 6.0.0)
   sass-rails
