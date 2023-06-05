@@ -11,7 +11,7 @@ ActiveAdmin.setup do |config|
   config.meta_tags = meta_tags_options
   config.meta_tags_for_logged_out_pages = meta_tags_options
 
-  config.site_title = 'Zadanie'
+  config.site_title = 'Posts'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -152,6 +152,7 @@ ActiveAdmin.setup do |config|
   #
   config.batch_actions = true
 
+  #config.clear_action_item(:new)
   # == Controller Filters
   #
   # You can add before, after and around filters to all of your

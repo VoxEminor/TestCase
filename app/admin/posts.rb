@@ -7,8 +7,6 @@ ActiveAdmin.register Post do
   filter :description
   filter :blocked, as: :check_boxes
 
-
-
   # form do |f|
   #   f.semantic_errors
   #   f.inputs 'Details' do

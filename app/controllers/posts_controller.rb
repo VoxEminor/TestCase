@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @post = @current_user.posts.new(post_params)
 
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: 'Your post successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to @post, notice: 'Your post was updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,6 +42,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:notice] = 'Your post has been deleted.'
     redirect_to root_path, status: :see_other
   end
 

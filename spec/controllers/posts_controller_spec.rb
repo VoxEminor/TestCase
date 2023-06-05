@@ -8,7 +8,7 @@ RSpec.describe PostsController, type: :controller do
     let(:posts) { create_list(:post, 5, user:) }
 
     before do
-      login_as user
+      sign_in user
       get :index
     end
 

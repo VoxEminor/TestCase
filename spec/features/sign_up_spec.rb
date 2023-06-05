@@ -1,10 +1,6 @@
 require 'rails_helper'
 
-feature 'User can sign up', "
-  In order to ask questions
-  As an unregistered user
-  I'd like to be able to sign up
-" do
+feature 'User can sign up' do
   background { visit new_user_registration_path }
 
   describe 'unregistered user' do

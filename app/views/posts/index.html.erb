@@ -9,9 +9,7 @@
   <% end %> 
 </ul>
 
-<center>
-  <%= paginate @posts %></center>
-</center>
+<%= paginate @posts %></center>
 
 <%= form_tag(posts_path, :method => "get") do %>
   <%= check_box_tag(:my) %>

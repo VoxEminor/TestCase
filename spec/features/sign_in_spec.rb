@@ -4,7 +4,7 @@ feature 'user can sign in', "
   To create posts, i have to be able to sign in
 " do
 
-  given(:user) { User.create!(email: 'correct@test.ru', password: '123456', admin: false) } 
+  given(:user) { User.create!(email: 'sign_in@test.ru', password: '123456', admin: false) } 
 
   background do
     visit new_user_session_path

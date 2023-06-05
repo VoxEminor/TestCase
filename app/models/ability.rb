@@ -10,11 +10,11 @@ class Ability
       else
         can :read, :all
         can :create, :all
-        can :edit, Post, user: user
-        can :update, Post, user: user
-        can :destroy, Post, user: user
+        #can :edit, Post, user: user
+        can :update, [Post, Comment], user: user
+        can :destroy, [Post, Comment], user: user
       end
-
+   
     else
       can :read, :all
     end

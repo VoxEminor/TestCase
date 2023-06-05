@@ -10,7 +10,7 @@ development:
   database: <%= ENV.fetch("DATABASE_NAME") {'zadanie_development'}%>
   username: <%= ENV.fetch("DATABASE_USER") {'evgeny'} %>
   password: <%= ENV.fetch("DATABASE_PASSWORD") {123} %>
-  host: 127.0.0.1 #<%= ENV.fetch("DATABASE_HOST") {123} %>
+  host: <%= ENV.fetch("DATABASE_HOST") {123} %>
   port: 5432
 
 
@@ -20,14 +20,6 @@ test:
   username: <%= ENV.fetch("DATABASE_USER") {'evgeny'} %>
   password: <%= ENV.fetch("DATABASE_PASSWORD") {123}%>
 
-#
-# production:
-#   adapter: postgresql
-#   encoding: unicode
-#   database: zadanie_production
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: evgeny
-#   password: <%= ENV["ZADANIE_DATABASE_PASSWORD"] %>
 
 production:
   <<: *default
