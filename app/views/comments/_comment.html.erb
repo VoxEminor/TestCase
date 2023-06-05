@@ -8,7 +8,7 @@
   <%= comment.body %>
 </p>
 
-<% if can?(:destroy, Comment) %>
+<% if current_user.admin? %>
   <p>
     <%= link_to "Destroy Comment", [comment.post, comment], data: {
                turbo_method: :delete,
